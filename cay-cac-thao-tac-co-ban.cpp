@@ -167,5 +167,5 @@ int deleteTNodeLeft(TNode* T)
 	if (p->left == NULL || p->right == NULL)
 		return 0;
 	delete p;
-	return 1;
+	return 2;
 }
