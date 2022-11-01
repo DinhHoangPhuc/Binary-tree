@@ -145,7 +145,27 @@ void traverseRLN(TNode* root)
 	printf("%d\t", root->info);
 }
 
-TNode* findTNode(TNode* T, int x)
+TNode* findTNode(TNode* root, int x)
 {
+	if (!root)
+		return NULL;
+	if (root->info == x)
+		return root;
+	TNode* p = findTNode(root->left, x);
+	if (p)
+		return p;
+	return findTNode(root->right, x);
+}
 
+int deleteTNodeLeft(TNode* T)
+{
+	if (T == NULL)
+		return 0;
+	TNode* p = T->left;
+	if (p == NULL)
+		return 0;
+	if (p->left == NULL || p->right == NULL)
+		return 0;
+	delete p;
+	return 1;
 }
