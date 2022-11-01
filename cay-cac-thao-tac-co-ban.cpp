@@ -20,6 +20,12 @@ int isEmpty(BTree bt);
 int insertTNodeLeft(TNode*& T, TNode* p);
 int insertTNodeRight(TNode*& T, TNode* p);
 int insertTNode(TNode*& root, TNode* p);
+void traverseNLR(TNode* root);
+void traverseNRL(TNode* root);
+void traverseLNR(TNode* root);
+void traverseRNL(TNode* root);
+void traverseLRN(TNode* root);
+void traverseRLN(TNode* root);
 
 TNode* createTNode(int x)
 {
@@ -192,3 +198,4 @@ int deleteTree(TNode*& root)
 	delete root;
 	return 1;
 }
+
