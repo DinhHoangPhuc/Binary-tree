@@ -169,3 +169,16 @@ int deleteTNodeLeft(TNode* T)
 	delete p;
 	return 1;
 }
+
+int deleteTNodeRight(TNode* T)
+{
+	if (T == NULL)
+		return 0;
+	TNode* p = T->right;
+	if (p == NULL)
+		return 0;
+	if (p->left == NULL || p->right == NULL)
+		return 0;
+	delete p;
+	return 1;
+}
