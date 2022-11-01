@@ -192,3 +192,4 @@ int deleteTree(TNode*& root)
 	delete root;
 	return 1;
 }
+
