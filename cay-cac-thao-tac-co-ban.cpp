@@ -182,3 +182,13 @@ int deleteTNodeRight(TNode* T)
 	delete p;
 	return 1;
 }
+
+int deleteTree(TNode*& root)
+{
+	if (!root)
+		return 0;
+	deleteTree(root->left);
+	deleteTree(root->right);
+	delete root;
+	return 1;
+}
