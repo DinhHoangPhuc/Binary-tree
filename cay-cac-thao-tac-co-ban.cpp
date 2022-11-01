@@ -26,6 +26,79 @@ void traverseLNR(TNode* root);
 void traverseRNL(TNode* root);
 void traverseLRN(TNode* root);
 void traverseRLN(TNode* root);
+TNode* findTNode(TNode* root, int x);
+int deleteTNodeLeft(TNode* T);
+int deleteTNodeRight(TNode* T);
+int deleteTree(TNode*& root);
+void createArray(int array[], int n);
+void showArray(int array[], int n);
+void createBTreeFromArray(TNode*& root, int array[], int n);
+
+void main()
+{
+	int choice;
+	do
+	{
+		do
+		{
+			printf("\n------------------------------MENU-------------------------------\n");
+			printf("1. Tao cay nhi phan tu mang.\n");
+			printf("Nhap lua chon: ");
+			scanf_s("%d", &choice);
+		} while (choice < 0 || choice>6);
+
+		switch (choice)
+		{
+		case 1:
+		{
+			int array[10], n;
+			BTree bt;
+			printf("Nhap so phan tu mang: ");
+			scanf_s("%d", &n);
+			createArray(array, n);
+			printf("Mang hien tai:\n");
+			showArray(array, n);
+			initTree(bt);
+			createBTreeFromArray(bt.root, array, n);
+			printf("Cay sau khi tao tu mang:\n");
+			traverseNLR(bt.root);
+			break;
+		}
+
+		default:
+			break;
+		}
+	} while (choice != 0);
+}
+
+void createArray(int array[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("Nhap phan tu thu %d: ", i);
+		scanf_s("%d", &array[i]);
+	}
+}
+
+void showArray(int array[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("Phan tu thu %d: %d\n", i, array[i]);
+	}
+}
+
+void createBTreeFromArray(TNode*& root, int array[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		TNode* p = createTNode(array[i]);
+		if (p != NULL)
+		{
+			insertTNode(root, p);
+		}
+	}
+}
 
 TNode* createTNode(int x)
 {
@@ -81,7 +154,10 @@ int insertTNode(TNode*& root, TNode* p)
 	if (p == NULL)
 		return 0;
 	if (root == NULL)
+	{
 		root = p;
+		return 1;
+	}
 	if (root->left == NULL)
 		insertTNode(root->left, p);
 	else
@@ -95,6 +171,7 @@ int insertTNode(TNode*& root, TNode* p)
 			else
 				insertTNode(root->right, p);
 		}
+	return 1;
 }
 
 void traverseNLR(TNode* root)
